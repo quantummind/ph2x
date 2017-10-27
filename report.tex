@@ -1,0 +1,60 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Physics 20 Lab 3}
+\author{Alexander Zlokapa}
+
+\begin{document}
+\maketitle
+
+\section{Explicit Euler Method}
+For all graphs, we will use the initial conditions of $x_{initial} = 0$ and $v_{initial} = 10$. Plotting $x$ and $v$ against $t$ with $h = 0.001$, we have the following plots:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{1.png}
+\caption{$x$ vs. $t$, $h = 0.001$, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{2.png}
+\caption{$v$ vs. $t$, $h = 0.001$, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+Given the equation $F = -kx = m\frac{d^2x}{dt^2}$ from applying Newton's second law to a spring, we can can solve the differential equation (setting $k/m=1$) to find that $x(t) = x_{init} \cos(t) + v_{init} \sin(t)$. Accordingly $x^\prime (t) = v(t) = -x_{init} \sin(t) + v_{init} \cos(t)$. Subtracting the explicit Euler solutions from the analytic solution, we can plot the error for $h=0.001$:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{3.png}
+\caption{$x(t)$ error vs. $t$, $h = 0.001$, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{4.png}
+\caption{$v(t)$ error vs. $t$, $h = 0.001$, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+To evaluate the truncation error, we plotted the maximum error of the Eulerian solution to $x(t)$ compared to the analytic solution from $t = 0$ to $t = 50$ for values of $h = h_0, h_0/2, h_0/4, h_0/8, h_0/16$ starting from $h_0 = 0.001$. The plot is shown below:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{5.png}
+\caption{$x(t)$ max error vs. $h$, $t$ ranges from 0 to 50, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+Computing the normalized total energy (shown below), we found that $E$ increases over time, starting close to the proper value (100) and gradually getting larger. This increased energy error corresponds to the error in position and velocity increasing over time.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{6.png}
+\caption{$E$ vs. $t$, $h = 0.001$, $x_{init} = 0$, $v_{init} = 10$.}
+\end{figure}
+\end{document}
