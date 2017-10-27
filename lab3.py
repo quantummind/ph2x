@@ -1,3 +1,10 @@
+###
+# for the purposes of lab 4, only the figures concerning explicit euler are
+# generated, although all the previous code is still included in this file
+###
+
+
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -38,13 +45,15 @@ def eulerSpringSpecific(h, plot, step):
 		plt.xlabel('t')
 		plt.title('Position')
 		plt.plot(tVals, xVals)
-		plt.show()
-	
+		plt.savefig('1.png')
+		plt.clf()
+		
 		plt.ylabel('V(t)')
 		plt.xlabel('t')
 		plt.title('Velocity')
 		plt.plot(tVals, vVals)
-		plt.show()
+		plt.savefig('2.png')
+		plt.clf()
 	
 	return [tVals, xVals, vVals]
 
@@ -71,13 +80,15 @@ def eulerSpringError(txv):
 	plt.xlabel('t')
 	plt.title('Position Error')
 	plt.plot(tVals, xError)
-	plt.show()
+	plt.savefig('3.png')
+	plt.clf()
 	
 	plt.ylabel('V(t) Error')
 	plt.xlabel('t')
 	plt.title('Velocity Error')
 	plt.plot(tVals, vError)
-	plt.show()
+	plt.savefig('4.png')
+	plt.clf()
 
 def eulerSpringMaxError(txv):
 	tVals = txv[0]
@@ -96,7 +107,8 @@ def hError(eulerSpring):
 	plt.xlabel('h')
 	plt.title('Error vs. h')
 	plt.plot(hVals, errors)
-	plt.show()
+	plt.savefig('5.png')
+	plt.clf()
 
 def springEnergy(eulerSpring):
 	txv = eulerSpring(0.0001, False)
@@ -106,7 +118,8 @@ def springEnergy(eulerSpring):
 	plt.xlabel('t')
 	plt.title('Energy')
 	plt.plot(txv[0], eVals)
-	plt.show()
+	plt.savefig('6.png')
+	plt.clf()
 
 def plotPhaseSpace(txv):
 	plt.ylabel('V(t)')
@@ -148,6 +161,9 @@ def symplecticPhaseLag():
 	plt.title('V(t) Eulerian and Analytic Solutions')
 	plt.show()
 
+
+a = sys.argv
+
 # 1.1
 txv = eulerSpringExplicit(0.001, True)
 
@@ -159,24 +175,3 @@ hError(eulerSpringExplicit)
 
 # 1.4
 springEnergy(eulerSpringExplicit)
-
-# 1.5
-txv = eulerSpringImplicit(0.001, True)
-eulerSpringError(txv)
-hError(eulerSpringImplicit)
-springEnergy(eulerSpringImplicit)
-
-# 2.1
-plotPhaseSpace(eulerSpringExplicit(0.01, False))
-plotPhaseSpace(eulerSpringImplicit(0.01, False))
-
-# 2.2
-plotPhaseSpace(eulerSpringSymplectic(0.01, False))
-
-# 2.3
-springEnergy(eulerSpringSymplectic)
-txv = eulerSpringSymplectic(0.01, True)
-eulerSpringError(txv)
-
-# 2.4
-symplecticPhaseLag()
