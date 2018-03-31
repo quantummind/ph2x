@@ -1,0 +1,13 @@
+Assignments:
+
+Due Thursdays at midnight
+Submit via email (files or linke to Github)
+	Source code (.py or jupyter)
+	data files
+	LaTex report (informal investigation + relevant plots)
+		source code (ZIP w/ plots) + pdf
+
+python
+	times = [i*dt for i in range(N)]
+numpy
+	times = np.linspace(0, N*dt, N)

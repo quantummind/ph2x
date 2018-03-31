@@ -1,0 +1,19 @@
+dy/dt = g(y, t)
+solve ODE with Euler method
+	y_{i+1} = y_i + h * g(y_{i+1}, t)
+error
+	y(t) = y(t_i) + g(y_i, t_i)*(t-t_i) + 1/2 * dg(y, t)/dt * (t-t_i)^2 + ...
+										   ^ leading order error term
+simple harmonic oscillator
+	1/2 dv/dt * (t - t_i)^2 = 1/2 h^2 a_i
+	1/2 d(-x)/dt * (t - t_i)^2 = 1/2 h^2 a_i
+
+"simplectic" method conserves area of region in phase space
+
+leapfrog method is used for n-body simulation
+	x_{i+1} = x_i + h*v_{i+0.5}
+	v_{i+1.5} = v_{i+0.5} + h*a_{i+1}
+	
+	easier equivalent:
+	x_{i+1} = x_i + v_i * h  + 1/2 a_i * h^2
+	v_{i+1} = v_i + h * (a_i + a_{i+1}) / 2
